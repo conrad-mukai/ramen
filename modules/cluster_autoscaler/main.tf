@@ -102,8 +102,10 @@ resource "kubernetes_cluster_role" "this" {
   }
   rule {
     api_groups = [""]
-    resources = ["namespaces", "pods", "services", "replicationcontrollers",
-    "persistentvolumeclaims", "persistentvolumes"]
+    resources = [
+      "namespaces", "pods", "services", "replicationcontrollers",
+      "persistentvolumeclaims", "persistentvolumes"
+    ]
     verbs = ["watch", "list", "get"]
   }
   rule {
@@ -123,8 +125,9 @@ resource "kubernetes_cluster_role" "this" {
   }
   rule {
     api_groups = ["storage.k8s.io"]
-    resources = ["storageclasses", "csinodes", "csidrivers",
-    "csistoragecapacities"]
+    resources = [
+      "storageclasses", "csinodes", "csidrivers", "csistoragecapacities"
+    ]
     verbs = ["watch", "list", "get"]
   }
   rule {
@@ -167,8 +170,9 @@ resource "kubernetes_role" "this" {
   rule {
     api_groups = [""]
     resources  = ["configmaps"]
-    resource_names = ["cluster-autoscaler-status",
-    "cluster-autoscaler-priority-expander"]
+    resource_names = [
+      "cluster-autoscaler-status", "cluster-autoscaler-priority-expander"
+    ]
     verbs = ["delete", "get", "update", "watch"]
   }
 }
