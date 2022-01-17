@@ -5,8 +5,9 @@
  *   1. a metrics server;
  *   2. a cluster autoscaler;
  *   3. an AWS loadbalancer ingress controller;
- *   4. an NGINX ingress controller; and
- *   5. a Kubernetes dashboard.
+ *   4. an NGINX ingress controller;
+ *   5. a Kubernetes dashboard; and
+ *   6. Kubernetes namespaces with optional Fargate profiles.
  *
  * This module provides public access to resources via an AWS application
  * loadbalancer. To encrypt traffic an
@@ -144,4 +145,19 @@ module "dashboard" {
     module.nginx_controller,
     module.loadbalancer_controller
   ]
+}
+
+
+# -----------------------------------------------------------------------------
+# Namespaces
+# -----------------------------------------------------------------------------
+
+module "namespaces" {
+  source                  = "../../modules/namespace"
+  for_each                = var.namespaces
+  name                    = each.key
+  cluster_name            = data.terraform_remote_state.core.outputs.eks_cluster_name
+  enable_fargate          = each.value.enable_fargate
+  fargate_selector_labels = each.value.fargate_selector_labels
+  fargate_subnet_ids      = data.terraform_remote_state.core.outputs.private_subnet_ids
 }

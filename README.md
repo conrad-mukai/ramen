@@ -29,10 +29,12 @@ This project will create the following:
 2. an AWS EKS cluster with managed node groups; and
 3. several services for cluster management, including:
    1. a [Metric Server](https://github.com/kubernetes-sigs/metrics-server);
-   2. a [Cluster Autoscaler](https://github.com/kubernetes/autoscaler); and
+   2. a [Cluster Autoscaler](https://github.com/kubernetes/autoscaler);
    3. a [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) behind
       an [AWS application loadbalancer](https://aws.amazon.com/elasticloadbalancing/application-load-balancer/)
-      (no proxy required).
+      (no proxy required); and
+   4. [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+      with optional [Fargate profiles](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html).
 
 ## Structure
 

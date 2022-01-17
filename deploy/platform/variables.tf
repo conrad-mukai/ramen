@@ -115,3 +115,15 @@ variable "dashboard_metrics_scraper_node_selectors" {
   type        = map(string)
   description = "Kubernetes dashboard metrics scraper node selectors"
 }
+
+
+# namespaces
+
+variable "namespaces" {
+  type = map(object({
+    enable_fargate          = bool
+    fargate_selector_labels = map(string)
+  }))
+  description = "namespace specs"
+  default     = {}
+}

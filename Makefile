@@ -3,6 +3,9 @@
 # find all modules
 modules = $(shell find . -name main.tf -exec dirname {} \;)
 
+# always build all
+.PHONY: all
+
 # run terraform fmt and terraform-docs
 all:
 	for m in $(modules); do \

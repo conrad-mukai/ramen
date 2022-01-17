@@ -45,3 +45,11 @@ dashboard_node_selectors = {
 dashboard_metrics_scraper_node_selectors = {
   "eks.amazonaws.com/nodegroup" = "spot"
 }
+
+# namespaces
+namespaces = {
+  demo = {
+    enable_fargate          = true
+    fargate_selector_labels = {}
+  }
+}

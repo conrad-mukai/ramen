@@ -60,9 +60,10 @@ module "network" {
 # -----------------------------------------------------------------------------
 
 module "bastion" {
-  source  = "../../modules/bastion"
-  env     = var.env
-  subnets = module.network.public_subnets[*].id
+  source        = "../../modules/bastion"
+  bastion_count = var.bastion_count
+  env           = var.env
+  subnets       = module.network.public_subnets[*].id
   security_groups = [
     module.network.ssh_security_group_id,
     module.network.egress_security_group_id

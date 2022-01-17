@@ -5,8 +5,9 @@ Deploy platform resources. This includes:
   1. a metrics server;
   2. a cluster autoscaler;
   3. an AWS loadbalancer ingress controller;
-  4. an NGINX ingress controller; and
-  5. a Kubernetes dashboard.
+  4. an NGINX ingress controller;
+  5. a Kubernetes dashboard; and
+  6. Kubernetes namespaces with optional Fargate profiles.
 
 This module provides public access to resources via an AWS application
 loadbalancer. To encrypt traffic an
@@ -38,6 +39,7 @@ the node group that should be used for each resource.
 | <a name="module_eks_admin"></a> [eks\_admin](#module\_eks\_admin) | ../../modules/eks_admin | n/a |
 | <a name="module_loadbalancer_controller"></a> [loadbalancer\_controller](#module\_loadbalancer\_controller) | ../../modules/loadbalancer_controller | n/a |
 | <a name="module_metrics_server"></a> [metrics\_server](#module\_metrics\_server) | ../../modules/metrics_server | n/a |
+| <a name="module_namespaces"></a> [namespaces](#module\_namespaces) | ../../modules/namespace | n/a |
 | <a name="module_nginx_controller"></a> [nginx\_controller](#module\_nginx\_controller) | ../../modules/nginx_controller | n/a |
 | <a name="module_oidc_trust"></a> [oidc\_trust](#module\_oidc\_trust) | ../../modules/oidc_trust | n/a |
 
@@ -66,6 +68,7 @@ the node group that should be used for each resource.
 | <a name="input_loadbalancer_controller_node_selectors"></a> [loadbalancer\_controller\_node\_selectors](#input\_loadbalancer\_controller\_node\_selectors) | LoadBalancer controller node selectors | `map(string)` | n/a | yes |
 | <a name="input_metrics_server_node_selectors"></a> [metrics\_server\_node\_selectors](#input\_metrics\_server\_node\_selectors) | metrics server node selectors | `map(string)` | n/a | yes |
 | <a name="input_metrics_server_version"></a> [metrics\_server\_version](#input\_metrics\_server\_version) | metrics server version | `string` | n/a | yes |
+| <a name="input_namespaces"></a> [namespaces](#input\_namespaces) | namespace specs | <pre>map(object({<br>    enable_fargate          = bool<br>    fargate_selector_labels = map(string)<br>  }))</pre> | `{}` | no |
 | <a name="input_nginx_controller_chart_version"></a> [nginx\_controller\_chart\_version](#input\_nginx\_controller\_chart\_version) | NGINX ingress controller Helm chart version | `string` | n/a | yes |
 | <a name="input_nginx_controller_node_selectors"></a> [nginx\_controller\_node\_selectors](#input\_nginx\_controller\_node\_selectors) | NGINX ingress controller node selectors | `map(string)` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | n/a | yes |

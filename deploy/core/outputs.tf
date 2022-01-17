@@ -3,6 +3,19 @@
  */
 
 
+# Network
+
+output "public_subnet_ids" {
+  value       = module.network.public_subnets[*].id
+  description = "public subnet IDs"
+}
+
+output "private_subnet_ids" {
+  value       = module.network.private_subnets[*].id
+  description = "private subnet IDs"
+}
+
+
 # Bastion
 
 output "bastion_instance_ids" {

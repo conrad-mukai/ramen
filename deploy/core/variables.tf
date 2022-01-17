@@ -37,6 +37,15 @@ variable "admin_access" {
 }
 
 
+# Bastions
+
+variable "bastion_count" {
+  type        = number
+  description = "number of bastions to create"
+  default     = 1
+}
+
+
 # EKS
 
 variable "node_groups" {
